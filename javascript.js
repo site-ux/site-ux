@@ -4,17 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
   allContents.forEach(content => {
     content.style.display = 'none';
   });
-
-  // Carrega as perguntas do quiz
-  fetch('quiz.json')
-    .then(response => response.json())
-    .then(data => {
-      // Armazena as perguntas e respostas em uma variável global
-      window.quizData = data.perguntas;
-    });
 });
 
 function showInfo(info) {
+
   // Oculta todos os conteúdos
   const allContents = document.querySelectorAll('.info-container');
   allContents.forEach(content => {
@@ -46,3 +39,4 @@ function updateFooterDate() {
 
 // Chama a função para atualizar a data quando a página for carregada
 window.addEventListener('load', updateFooterDate);
+
