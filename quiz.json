@@ -1,0 +1,304 @@
+{
+  "perguntas": [
+    {
+      "id": 1,
+      "pergunta": "Qual é o objetivo principal do UX Design?",
+      "opcoes": [
+        "Criar interfaces visualmente atraentes.",
+        "Facilitar a experiência do usuário.",
+        "Otimizar o código do aplicativo."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 2,
+      "pergunta": "O que significa “GUI” em UX Design?",
+      "opcoes": [
+        "Graphical User Interface (Interface Gráfica do Usuário).",
+        "General User Interaction (Interação Geral do Usuário).",
+        "Great User Insights (Ótimas Percepções do Usuário)."
+      ],
+      "resposta_correta": 1
+    },
+    {
+      "id": 3,
+      "pergunta": "Quem é conhecido por introduzir o conceito de “Design Centrado no Usuário”?",
+      "opcoes": [
+        "Steve Jobs.",
+        "Donald Norman.",
+        "Mark Zuckerberg."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 4,
+      "pergunta": "Qual é o papel de um UX Designer?",
+      "opcoes": [
+        "Desenvolver código backend.",
+        "Criar layouts de impressão.",
+        "Projetar experiências de usuário."
+      ],
+      "resposta_correta": 3
+    },
+    {
+      "id": 5,
+      "pergunta": "O que é o “teste de usabilidade” em UX Design?",
+      "opcoes": [
+        "Testar a resistência de um produto.",
+        "Avaliar a facilidade de uso de um produto com usuários reais.",
+        "Verificar a qualidade do código-fonte."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 6,
+      "pergunta": "Qual é o objetivo da pesquisa de UX?",
+      "opcoes": [
+        "Encontrar bugs no software.",
+        "Compreender as necessidades e expectativas dos usuários.",
+        "Otimizar o desempenho do servidor."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 7,
+      "pergunta": "O que é um “wireframe” em UX Design?",
+      "opcoes": [
+        "Um esboço de um logotipo.",
+        "Uma representação visual básica da estrutura de uma página ou aplicativo.",
+        "Um tipo de fonte usada em designs de interface."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 8,
+      "pergunta": "Qual é a importância da acessibilidade em UX Design?",
+      "opcoes": [
+        "Não é importante.",
+        "Torna o produto acessível a todos, independentemente de suas habilidades.",
+        "Aumenta a velocidade de carregamento do site."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 9,
+      "pergunta": "Quais são os elementos essenciais do UX Design?",
+      "opcoes": [
+        "Cores e fontes.",
+        "Interface, organização e pesquisa.",
+        "Animações e efeitos visuais."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 10,
+      "pergunta": "O que é o “Design Responsivo” em UX Design?",
+      "opcoes": [
+        "Um estilo de design retrô.",
+        "Um design que se adapta a diferentes dispositivos e tamanhos de tela.",
+        "Um tipo de animação de página."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 11,
+      "pergunta": "Quem é conhecido por seus estudos sobre usabilidade na web?",
+      "opcoes": [
+        "Jakob Nielsen.",
+        "Tim Cook.",
+        "Elon Musk."
+      ],
+      "resposta_correta": 1
+    },
+    {
+      "id": 12,
+      "pergunta": "O que é o “Design Thinking” em UX Design?",
+      "opcoes": [
+        "Um processo criativo para resolver problemas.",
+        "Um estilo de design minimalista.",
+        "Uma técnica de codificação avançada."
+      ],
+      "resposta_correta": 1
+    },
+    {
+      "id": 13,
+      "pergunta": "Qual é o objetivo do “teste A/B” em UX Design?",
+      "opcoes": [
+        "Testar diferentes tipos de bateria.",
+        "Comparar duas versões de uma página ou aplicativo para determinar qual é mais eficaz.",
+        "Avaliar a segurança do sistema."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 14,
+      "pergunta": "O que é um “persona” em UX Design?",
+      "opcoes": [
+        "Um tipo de fonte.",
+        "Uma representação fictícia de um usuário com características específicas.",
+        "Um ícone de aplicativo."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 15,
+      "pergunta": "Qual é a diferença entre UI Design e UX Design?",
+      "opcoes": [
+        "Não há diferença.",
+        "UI Design se concentra na aparência visual, enquanto UX Design se concentra na experiência do usuário.",
+        "UI Design é apenas para aplicativos móveis."
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 16,
+      "pergunta": "Por que o UX se tornou uma disciplina indispensável?",
+      "opcoes": [
+        "Garante a usabilidade, acessibilidade e a satisfação do cliente;",
+        "Garante visibilidade a empresa e lucros;",
+        "Garante mais parceiros para a empresa;"
+      ],
+      "resposta_correta": 1
+    },
+    {
+      "id": 17,
+      "pergunta": "O que faz um Designer de UX?",
+      "opcoes": [
+        "Encarregado de entender as necessidades, comportamentos e motivação do usuário;",
+        "Especialista em criar experiências de usuário otimizadas para dispositivos móveis;",
+        "Responsável por criar experiências de usuário eficazes e agradáveis;"
+      ],
+      "resposta_correta": 3
+    },
+    {
+      "id": 18,
+      "pergunta": "O que faz um pesquisador de UX?",
+      "opcoes": [
+        "Encarregado de entender as necessidades, comportamentos e motivação do usuário;",
+        "Especialista em criar experiências de usuário otimizadas para dispositivos móveis;",
+        "Responsável por criar experiências de usuário eficazes e agradáveis;"
+      ],
+      "resposta_correta": 1
+    },
+    {
+      "id": 19,
+      "pergunta": "O que faz um Especialista em Acessibilidade ?",
+      "opcoes": [
+        "Responsável por criar experiências de usuário eficazes e agradáveis;",
+        "Garante que os produtos digitais sejam utilizáveis por pessoas com ima variedade de necessidades e habilidades;",
+        "Encarregado de entender as necessidades, comportamentos e motivação do usuário;"
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 20,
+      "pergunta": "O que faz um Designer de UX Móvel?",
+      "opcoes": [
+        "Especialista em criar experiências de usuário otimizadas para dispositivos móveis;",
+        "Responsável por criar experiências de usuário eficazes e agradáveis;",
+        "Garante que os produtos digitais sejam utilizáveis por pessoas com ima variedade de necessidades e habilidades;"
+      ],
+      "resposta_correta": 1
+    },
+    {
+      "id": 21,
+      "pergunta": "Quais são os benefícios da UX para a empresa?",
+      "opcoes": [
+        "Aumenta a fidelidade do cliente, a diferenciação do mercado e o retorno sobre os investimentos;",
+        "Profissionais mais motivados e criativos.",
+        "Melhora a comunicação entre a empresa e o cliente."
+      ],
+      "resposta_correta": 1
+    },
+    {
+      "id": 22,
+      "pergunta": "Como anda o crescimento do mercado UX?",
+      "opcoes": [
+        "Não cresce;",
+        "Crescendo lentamente;",
+        "Cresce de forma constante;"
+      ],
+      "resposta_correta": 3
+    },
+    {
+      "id": 23,
+      "pergunta": "O que as empresas buscam em um profissional UX?",
+      "opcoes": [
+        "Profissionais que aceitam o menor salário;",
+        "Profissionais qualificados;",
+        "Não tem nenhuma exigência quanto ao profissional;"
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 24,
+      "pergunta": "Em qual época surgiu o UX?",
+      "opcoes": [
+        "Década de 70;",
+        "Década de 80;",
+        "Década de 90;"
+      ],
+      "resposta_correta": 3
+    },
+    {
+      "id": 25,
+      "pergunta": "Qual a importância do UX?",
+      "opcoes": [
+        "Satisfação do usuário, engajamento, redução de custo e aumento da conversão;",
+        "Competitividade, acessibilidade, reputação da marca e feedbacks valiosos;",
+        "Todas as alternativas estão corretas"
+      ],
+      "resposta_correta": 3
+    },
+    {
+      "id": 26,
+      "pergunta": "O conceito 'Feedback valioso' pode ser usado para que?",
+      "opcoes": [
+        "Para o cliente saber como está andando o processo do desenvolvimento do projeto;",
+        "Esse conceito não pode ser usado;",
+        "Entender melhor as necessidades e preferências dos usuários, identificar áreas de melhoria no produto ou serviço e fazer ajustes contínuos para proporcionar uma melhor experiência ao usuário;"
+      ],
+      "resposta_correta": 3
+    },
+    {
+      "id": 27,
+      "pergunta": "Quais são as ferramentas para simplificar o processo de seleção de cores?",
+      "opcoes": [
+        "Color Hunt, Bootstrap, Wifeframe;",
+        "Color Hunt, Bootstrap, Figma;",
+        "Todas as opções;"
+      ],
+      "resposta_correta": 2
+    },
+    {
+      "id": 28,
+      "pergunta": "O que o Color Hunt oferece aos seus usuários?",
+      "opcoes": [
+        "Cores vivas e néons;",
+        "Uma coleção de cores neutras;",
+        "Uma coleção de paletas de cores selecionadas manualmente por designers e compartilhadas pela comunidade;"
+      ],
+      "resposta_correta": 3
+    },
+    {
+      "id": 29,
+      "pergunta": "O que faz um arquiteto de informações?",
+      "opcoes": [
+        "São responsáveis por organizar a informação de cada usuário do sistema;",
+        "São responsáveis por organizar as informações de lucro da empresa;",
+        "São responsáveis por organizar e estruturar a informação em sistemas digitais de forma lógica e intuitiva para os usuários;"
+      ],
+      "resposta_correta": 3
+    },
+    {
+      "id": 30,
+      "pergunta": "Do que fala o livro 'O design do Dia-a-dia'?",
+      "opcoes": [
+        "Conta sobre a vida de um Designer;",
+        "Explora como o design impacta diretamente a experiência do usuário em interações cotidianas;",
+        "Fala sobre o início da UX;"
+      ],
+      "resposta_correta": 2
+    }
+  ]
+}
