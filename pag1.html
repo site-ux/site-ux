@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de UX</title>
+  <!-- Inclua o link para o Semantic UI CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <style>
+    /* Estilos personalizados podem ser adicionados aqui */
+  </style>
+</head>
+
+<body>
+  <div class="ui container">
+    <h1 class="ui header">Quiz de UX</h1>
+    <div id="quiz-container" class="ui segment">
+      <div id="question"></div>
+      <div id="options" class="ui relaxed divided list"></div>
+      <button id="next-btn" class="ui primary button">Próxima Pergunta</button>
+    </div>
+    <div id="result-container" style="display: none;">
+      <h2 class="ui header" id="result"></h2>
+      <button id="restart-btn" class="ui primary button">Reiniciar Quiz</button>
+    </div>
+  </div>
+
+  <!-- Inclua o link para o jQuery e o Semantic UI JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  <!-- Script JavaScript para o Quiz -->
+  <script>
+    $(document).ready(function () {
+      let questions = []; // Array para armazenar as perguntas do JSON
+      let currentQuestion = 0; // Índice da pergunta atual
+      let score = 0; // Pontuação do usuário
+
+      // Função para carregar as perguntas do JSON
+      function loadQuestions() {
+        $.getJSON('http://localhost:8000/quiz.json', function (data) {
+          questions = data.perguntas; // Carrega as perguntas do JSON para o array
+          displayQuestion(); // Exibe a primeira pergunta
+        });
+      }
+
+
+      // Função para exibir a pergunta atual
+      function displayQuestion() {
+        if (currentQuestion < questions.length) {
+          const question = questions[currentQuestion];
+          $('#question').text(question.pergunta);
+
+          $('#options').empty(); // Limpa as opções anteriores
+
+          question.opcoes.forEach((option, index) => {
+            const listItem = $('<div class="item">').text(option);
+            listItem.click(() => checkAnswer(index, question.resposta_correta));
+            $('#options').append(listItem);
+          });
+        } else {
+          displayResult(); // Exibe o resultado final do quiz
+        }
+      }
+
+      // Função para verificar a resposta e atualizar a pontuação
+      function checkAnswer(selectedOption, correctAnswer) {
+        if (selectedOption === correctAnswer) {
+          score++;
+        }
+        currentQuestion++;
+        displayQuestion();
+      }
+
+      // Função para exibir o resultado final do quiz
+      function displayResult() {
+        const resultContainer = $('#result-container');
+        const resultHeader = $('#result');
+        const restartBtn = $('#restart-btn');
+
+        resultHeader.text(`Você acertou ${score} de ${questions.length} perguntas.`);
+        resultContainer.show();
+        $('#quiz-container').hide();
+
+        restartBtn.click(() => {
+          currentQuestion = 0;
+          score = 0;
+          resultContainer.hide();
+          $('#quiz-container').show();
+          displayQuestion();
+        });
+      }
+
+      loadQuestions(); // Chama a função para carregar as perguntas ao carregar a página
+    });
+  </script>
+</body>
+
+</html>
