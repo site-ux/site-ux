@@ -20,9 +20,11 @@
       <div id="options" class="ui relaxed divided list"></div>
       <button id="next-btn" class="ui primary button">Próxima Pergunta</button>
     </div>
-    <div id="result-container" style="display: none;">
+    <div id="result-container">
       <h2 class="ui header" id="result"></h2>
       <button id="restart-btn" class="ui primary button">Reiniciar Quiz</button>
+      <button id="btn-voltar-menu" class="ui button">Voltar ao Menu</button>
+      <button id="btn-pular-pergunta" class="ui button">Pular Pergunta</button>
     </div>
   </div>
 
@@ -44,7 +46,6 @@
         });
       }
 
-
       // Função para exibir a pergunta atual
       function displayQuestion() {
         if (currentQuestion < questions.length) {
@@ -58,6 +59,9 @@
             listItem.click(() => checkAnswer(index, question.resposta_correta));
             $('#options').append(listItem);
           });
+
+          // Mostra os botões "Voltar ao Menu" e "Pular Pergunta"
+          $('#btn-voltar-menu, #btn-pular-pergunta').show();
         } else {
           displayResult(); // Exibe o resultado final do quiz
         }
@@ -88,6 +92,22 @@
           resultContainer.hide();
           $('#quiz-container').show();
           displayQuestion();
+        });
+
+        // Evento para voltar ao menu inicial
+        $('#btn-voltar-menu').click(function () {
+          window.location.href = 'index.html'; // Substitua 'menu.html' pelo caminho do seu menu inicial
+        });
+
+        // Evento para pular a pergunta
+        $('#btn-pular-pergunta').click(function () {
+          currentQuestion++; // Aumenta o índice da pergunta
+          displayQuestion(); // Exibe a próxima pergunta
+        });
+
+        // Evento para a próxima pergunta
+        $('#next-btn').click(function () {
+          displayQuestion(); // Exibe a próxima pergunta
         });
       }
 
