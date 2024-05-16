@@ -8,7 +8,75 @@
   <!-- Inclua o link para o Semantic UI CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
   <style>
-    /* Estilos personalizados podem ser adicionados aqui */
+    /* Estilos personalizados */
+    body {
+      background-color: #f0f0f0; /* Cor de fundo do corpo */
+      font-family: Arial, sans-serif; /* Fonte padrão */
+    }
+
+    .ui.container {
+      margin-top: 20px; /* Margem superior para o container */
+    }
+
+    .ui.header {
+      text-align: center; /* Centraliza o cabeçalho */
+    }
+
+    .ui.segment {
+      background-color: #fff; /* Cor de fundo do segmento */
+      border-radius: 5px; /* Borda arredondada */
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+    #result-container {
+      text-align: center; /* Centraliza o container de resultado */
+      margin-top: 20px; /* Margem superior */
+    }
+
+    .ui.button {
+      margin-top: 10px; /* Margem superior para os botões */
+    }
+
+    .ui.primary.button {
+      background-color: #2185d0; /* Cor de fundo do botão primário */
+      color: #fff; /* Cor do texto do botão primário */
+    }
+
+    .ui.primary.button:hover {
+      background-color: #1678c2; /* Cor de fundo do botão primário ao passar o mouse */
+    }
+
+    .ui.button:not(.primary) {
+      background-color: transparent; /* Cor de fundo dos botões não primários */
+      color: #2185d0; /* Cor do texto dos botões não primários */
+    }
+
+    .ui.button:not(.primary):hover {
+      background-color: rgba(0, 0, 0, 0.05); /* Cor de fundo dos botões não primários ao passar o mouse */
+    }
+
+    .item {
+      cursor: pointer; /* Altera o cursor ao passar sobre as opções */
+    }
+
+    /* Estilo para dispositivos móveis */
+    @media (max-width: 767px) {
+      .ui.container {
+        margin-top: 10px; /* Margem superior menor para dispositivos móveis */
+      }
+
+      .ui.segment {
+        padding: 10px; /* Espaçamento interno menor para dispositivos móveis */
+      }
+
+      .ui.button {
+        margin-top: 5px; /* Margem superior menor para os botões em dispositivos móveis */
+      }
+
+      .item {
+        padding: 5px 10px; /* Espaçamento interno menor para as opções em dispositivos móveis */
+      }
+    }
   </style>
 </head>
 
@@ -20,7 +88,7 @@
       <div id="options" class="ui relaxed divided list"></div>
       <button id="next-btn" class="ui primary button">Próxima Pergunta</button>
     </div>
-    <div id="result-container">
+    <div id="result-container" style="display: none;">
       <h2 class="ui header" id="result"></h2>
       <button id="restart-btn" class="ui primary button">Reiniciar Quiz</button>
       <button id="btn-voltar-menu" class="ui button">Voltar ao Menu</button>
@@ -40,7 +108,7 @@
 
       // Função para carregar as perguntas do JSON
       function loadQuestions() {
-        $.getJSON('http://localhost:8000/quiz.json', function (data) {
+        $.getJSON('http://localhost:8080/quiz.json', function (data) {
           questions = data.perguntas; // Carrega as perguntas do JSON para o array
           displayQuestion(); // Exibe a primeira pergunta
         });
