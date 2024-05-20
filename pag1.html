@@ -113,7 +113,7 @@
 
       // Função para carregar as perguntas do JSON
       function loadQuestions() {
-        $.getJSON('http://localhost:8080/quiz.json', function (data) {
+        $.getJSON('https://raw.githubusercontent.com/EllenGui/site-ux/main/quiz.json', function (data) {
           questions = data.perguntas; // Carrega as perguntas do JSON para o array
           displayQuestion(); // Exibe a primeira pergunta
         });
