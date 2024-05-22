@@ -111,10 +111,19 @@
       let currentQuestion = 0; // Índice da pergunta atual
       let score = 0; // Pontuação do usuário
 
+      // Função para embaralhar o array de perguntas
+      function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+
       // Função para carregar as perguntas do JSON
       function loadQuestions() {
-        $.getJSON('https://raw.githubusercontent.com/EllenGui/site-ux/main/quiz.json', function (data) {
-          questions = data.perguntas; // Carrega as perguntas do JSON para o array
+        $.getJSON('http://localhost:8000/quiz.json', function (data) {
+          questions = shuffle(data.perguntas).slice(0, 10); // Embaralha e seleciona as 10 primeiras perguntas
           displayQuestion(); // Exibe a primeira pergunta
         });
       }
