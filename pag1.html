@@ -144,6 +144,13 @@
 
           // Mostra os botões "Voltar ao Menu" e "Pular Pergunta"
           $('#btn-voltar-menu, #btn-pular-pergunta').show();
+
+          // Mostra o botão "Próxima Pergunta" e o esconde quando todas as perguntas forem respondidas
+          if (currentQuestion === questions.length - 1) {
+            $('#next-btn').hide();
+          } else {
+            $('#next-btn').show();
+          }
         } else {
           displayResult(); // Exibe o resultado final do quiz
         }
@@ -186,12 +193,13 @@
           currentQuestion++; // Aumenta o índice da pergunta
           displayQuestion(); // Exibe a próxima pergunta
         });
-
-        // Evento para a próxima pergunta
-        $('#next-btn').click(function () {
-          displayQuestion(); // Exibe a próxima pergunta
-        });
       }
+
+      // Evento para a próxima pergunta
+      $('#next-btn').click(function () {
+        currentQuestion++; // Aumenta o índice da pergunta
+        displayQuestion(); // Exibe a próxima pergunta
+      });
 
       loadQuestions(); // Chama a função para carregar as perguntas ao carregar a página
     });
