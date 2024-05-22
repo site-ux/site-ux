@@ -64,6 +64,11 @@
       background-color: rgba(0, 0, 0, 0.05); /* Mudança de cor ao passar o mouse */
     }
 
+    .selected {
+      font-weight: bold;
+      background-color: rgba(33, 133, 208, 0.1);
+    }
+
     /* Estilo para dispositivos móveis */
     @media (max-width: 767px) {
       .ui.container {
@@ -91,13 +96,14 @@
     <div id="quiz-container" class="ui segment">
       <div id="question"></div>
       <div id="options" class="ui relaxed divided list"></div>
-      <button id="next-btn" class="ui primary button">Próxima Pergunta</button>
+      <button id="confirm-btn" class="ui primary button">Confirmar Resposta</button>
+      <button id="next-btn" class="ui primary button" disabled>Próxima Pergunta</button>
+      <button id="skip-btn" class="ui button">Pular Pergunta</button>
     </div>
     <div id="result-container" style="display: none;">
       <h2 class="ui header" id="result"></h2>
       <button id="restart-btn" class="ui primary button">Reiniciar Quiz</button>
       <button id="btn-voltar-menu" class="ui button">Voltar ao Menu</button>
-      <button id="btn-pular-pergunta" class="ui button">Pular Pergunta</button>
     </div>
   </div>
 
@@ -110,6 +116,8 @@
       let questions = []; // Array para armazenar as perguntas do JSON
       let currentQuestion = 0; // Índice da pergunta atual
       let score = 0; // Pontuação do usuário
+      let skippedQuestions = 0; // Contador de perguntas puladas
+      let selectedOption = null; // Opção selecionada
 
       // Função para embaralhar o array de perguntas
       function shuffle(array) {
@@ -135,34 +143,39 @@
           $('#question').text(question.pergunta);
 
           $('#options').empty(); // Limpa as opções anteriores
+          selectedOption = null; // Reseta a opção selecionada
 
           question.opcoes.forEach((option, index) => {
             const listItem = $('<div class="item">').text(option);
-            listItem.click(() => checkAnswer(index, question.resposta_correta));
+            listItem.click(() => {
+              $('.item').removeClass('selected'); // Remove a classe 'selected' de todas as opções
+              listItem.addClass('selected'); // Adiciona a classe 'selected' à opção clicada
+              selectedOption = index; // Atualiza a opção selecionada
+            });
             $('#options').append(listItem);
           });
 
-          // Mostra os botões "Voltar ao Menu" e "Pular Pergunta"
-          $('#btn-voltar-menu, #btn-pular-pergunta').show();
-
-          // Mostra o botão "Próxima Pergunta" e o esconde quando todas as perguntas forem respondidas
-          if (currentQuestion === questions.length - 1) {
-            $('#next-btn').hide();
-          } else {
-            $('#next-btn').show();
-          }
+          // Ajusta a visibilidade dos botões
+          $('#confirm-btn').prop('disabled', false);
+          $('#next-btn').prop('disabled', true);
+          $('#skip-btn').prop('disabled', false);
         } else {
           displayResult(); // Exibe o resultado final do quiz
         }
       }
 
       // Função para verificar a resposta e atualizar a pontuação
-      function checkAnswer(selectedOption, correctAnswer) {
-        if (selectedOption === correctAnswer) {
+      function checkAnswer() {
+        const question = questions[currentQuestion];
+        if (selectedOption === question.resposta_correta) {
           score++;
         }
-        currentQuestion++;
-        displayQuestion();
+        $('#confirm-btn').prop('disabled', true);
+        $('#next-btn').prop('disabled', false);
+        $('#skip-btn').prop('disabled', true);
+        if (currentQuestion === questions.length - 1) {
+          $('#next-btn').text('Finalizar Quiz');
+        }
       }
 
       // Função para exibir o resultado final do quiz
@@ -171,27 +184,25 @@
         const resultHeader = $('#result');
         const restartBtn = $('#restart-btn');
 
-        resultHeader.text(`Você acertou ${score} de ${questions.length} perguntas.`);
+        const answeredQuestions = questions.length - skippedQuestions;
+        resultHeader.text(`Você acertou ${score} de ${answeredQuestions} perguntas respondidas.`);
         resultContainer.show();
         $('#quiz-container').hide();
 
         restartBtn.click(() => {
           currentQuestion = 0;
           score = 0;
+          skippedQuestions = 0;
           resultContainer.hide();
           $('#quiz-container').show();
-          displayQuestion();
+          $('#next-btn').text('Próxima Pergunta').prop('disabled', true);
+          $('#confirm-btn').prop('disabled', false);
+          loadQuestions();
         });
 
         // Evento para voltar ao menu inicial
         $('#btn-voltar-menu').click(function () {
-          window.location.href = 'index.html'; // Substitua 'menu.html' pelo caminho do seu menu inicial
-        });
-
-        // Evento para pular a pergunta
-        $('#btn-pular-pergunta').click(function () {
-          currentQuestion++; // Aumenta o índice da pergunta
-          displayQuestion(); // Exibe a próxima pergunta
+          window.location.href = 'index.html'; // Substitua 'index.html' pelo caminho do seu menu inicial
         });
       }
 
@@ -201,7 +212,24 @@
         displayQuestion(); // Exibe a próxima pergunta
       });
 
-      loadQuestions(); // Chama a função para carregar as perguntas ao carregar a página
+      // Evento para pular a pergunta
+      $('#skip-btn').click(function () {
+        currentQuestion++; // Aumenta o índice da pergunta
+        skippedQuestions++; // Incrementa o contador de perguntas puladas
+        displayQuestion(); // Exibe a próxima pergunta
+      });
+
+      // Evento para confirmar a resposta
+      $('#confirm-btn').click(function () {
+        if (selectedOption !== null) { // Verifica se uma opção foi selecionada
+          checkAnswer(); // Verifica a resposta
+        } else {
+          alert('Por favor, selecione uma opção.'); // Alerta o usuário se nenhuma opção for selecionada
+        }
+      });
+
+      // Carrega as perguntas ao iniciar o quiz
+      loadQuestions();
     });
   </script>
 </body>
