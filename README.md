@@ -40,11 +40,11 @@ Este projeto está licenciado sob a Licença Creative Commons Não Comercial [CC
 
 [Giovane Henrique](https://github.com/GiovaneAlves)
 
-[Rayssa Lima Costa]( https://github.com/Rayssa046)
+[Rayssa Lima Costa](https://github.com/Rayssa046)
 
-[Tamires Rodrigues de Oliveira]( https://github.com/Tamires95378)
+[Tamires Rodrigues de Oliveira](https://github.com/Tamires95378)
 
-[Thalisson Rezende]( https://github.com/GiovaneAlves)
+[Thalisson Rezende](https://github.com/Thalissonrezende)
 
 
 
