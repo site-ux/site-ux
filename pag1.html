@@ -11,89 +11,115 @@
     /* Estilos personalizados */
     /* Adicione seus estilos personalizados aqui */
     body {
-      background-color: #f0f0f0; /* Cor de fundo do corpo */
-      font-family: Arial, sans-serif; /* Fonte padrão */
+      background-color: #f0f0f0;
+      /* Cor de fundo do corpo */
+      font-family: Arial, sans-serif;
+      /* Fonte padrão */
     }
 
     .ui.container {
-      margin-top: 20px; /* Margem superior para o container */
+      margin-top: 20px;
+      /* Margem superior para o container */
     }
 
     .ui.header {
-      text-align: center; /* Centraliza o cabeçalho */
+      text-align: center;
+      /* Centraliza o cabeçalho */
     }
 
     .ui.segment {
-      background-color: #fff; /* Cor de fundo do segmento */
-      border-radius: 5px; /* Borda arredondada */
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      background-color: #fff;
+      /* Cor de fundo do segmento */
+      border-radius: 5px;
+      /* Borda arredondada */
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      /* Sombra suave */
     }
 
     #result-container {
-      text-align: center; /* Centraliza o container de resultado */
-      margin-top: 20px; /* Margem superior */
+      text-align: center;
+      /* Centraliza o container de resultado */
+      margin-top: 20px;
+      /* Margem superior */
     }
 
     .ui.button {
-      margin-top: 10px; /* Margem superior para os botões */
+      margin-top: 10px;
+      /* Margem superior para os botões */
     }
 
     .ui.primary.button {
-      background-color: #2185d0; /* Cor de fundo do botão primário */
-      color: #fff; /* Cor do texto do botão primário */
+      background-color: #2185d0;
+      /* Cor de fundo do botão primário */
+      color: #fff;
+      /* Cor do texto do botão primário */
     }
 
     .ui.primary.button:hover {
-      background-color: #1678c2; /* Cor de fundo do botão primário ao passar o mouse */
+      background-color: #1678c2;
+      /* Cor de fundo do botão primário ao passar o mouse */
     }
 
     .ui.button:not(.primary) {
-      background-color: transparent; /* Cor de fundo dos botões não primários */
-      color: #2185d0; /* Cor do texto dos botões não primários */
+      background-color: transparent;
+      /* Cor de fundo dos botões não primários */
+      color: #2185d0;
+      /* Cor do texto dos botões não primários */
     }
 
     .ui.button:not(.primary):hover {
-      background-color: rgba(0, 0, 0, 0.05); /* Cor de fundo dos botões não primários ao passar o mouse */
+      background-color: rgba(0, 0, 0, 0.05);
+      /* Cor de fundo dos botões não primários ao passar o mouse */
     }
 
     .item {
-      cursor: pointer; /* Altera o cursor ao passar sobre as opções */
-      transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+      cursor: pointer;
+      /* Altera o cursor ao passar sobre as opções */
+      transition: background-color 0.3s ease;
+      /* Transição suave da cor de fundo */
     }
 
     .item:hover {
-      background-color: rgba(0, 0, 0, 0.05); /* Mudança de cor ao passar o mouse */
+      background-color: rgba(0, 0, 0, 0.05);
+      /* Mudança de cor ao passar o mouse */
     }
 
     .selected {
       font-weight: bold;
-      background-color: rgba(33, 133, 208, 0.1); /* Cor de fundo para a opção selecionada */
+      background-color: rgba(33, 133, 208, 0.1);
+      /* Cor de fundo para a opção selecionada */
     }
 
     .correct {
-      background-color: lightgreen !important; /* Cor de fundo para resposta correta */
+      background-color: lightgreen !important;
+      /* Cor de fundo para resposta correta */
     }
 
     .incorrect {
-      background-color: lightcoral !important; /* Cor de fundo para resposta incorreta */
+      background-color: lightcoral !important;
+      /* Cor de fundo para resposta incorreta */
     }
 
     /* Estilo para dispositivos móveis */
     @media (max-width: 767px) {
       .ui.container {
-        margin-top: 10px; /* Margem superior menor para dispositivos móveis */
+        margin-top: 10px;
+        /* Margem superior menor para dispositivos móveis */
       }
 
       .ui.segment {
-        padding: 10px; /* Espaçamento interno menor para dispositivos móveis */
+        padding: 10px;
+        /* Espaçamento interno menor para dispositivos móveis */
       }
 
       .ui.button {
-        margin-top: 5px; /* Margem superior menor para os botões em dispositivos móveis */
+        margin-top: 5px;
+        /* Margem superior menor para os botões em dispositivos móveis */
       }
 
       .item {
-        padding: 5px 10px; /* Espaçamento interno menor para as opções em dispositivos móveis */
+        padding: 5px 10px;
+        /* Espaçamento interno menor para as opções em dispositivos móveis */
       }
     }
   </style>
@@ -126,6 +152,7 @@
       let currentQuestion = 0; // Índice da pergunta atual
       let score = 0; // Pontuação do usuário
       let selectedOption = null; // Opção selecionada
+      let questionsAnsweredOrSkipped = 0; // Contador para perguntas respondidas ou puladas
 
       // Função para embaralhar o array de perguntas
       function shuffle(array) {
@@ -139,14 +166,14 @@
       // Função para carregar as perguntas do JSON
       function loadQuestions() {
         $.getJSON('https://raw.githubusercontent.com/EllenGui/site-ux/main/quiz.json', function (data) {
-          questions = shuffle(data.perguntas).slice(0, 10); // Embaralha e seleciona as 10 primeiras perguntas
+          questions = shuffle(data.perguntas); // Embaralha as perguntas
           displayQuestion(); // Exibe a primeira pergunta
         });
       }
 
       // Função para exibir a pergunta atual
       function displayQuestion() {
-        if (currentQuestion < questions.length) {
+        if (questionsAnsweredOrSkipped < 10) {
           const question = questions[currentQuestion];
           $('#question').html('<b>' + question.pergunta + '</b>');
 
@@ -184,9 +211,6 @@
         $('#confirm-btn').prop('disabled', true);
         $('#next-btn').prop('disabled', false);
         $('#skip-btn').prop('disabled', true);
-        if (currentQuestion === questions.length - 1) {
-          $('#next-btn').text('Finalizar Quiz');
-        }
       }
 
       // Função para exibir o resultado final do quiz
@@ -195,14 +219,14 @@
         const resultHeader = $('#result');
         const restartBtn = $('#restart-btn');
 
-        const answeredQuestions = questions.length - currentQuestion;
-        resultHeader.text(`Você acertou ${score} de ${answeredQuestions} perguntas respondidas.`);
+        resultHeader.text(`Você acertou ${score} de 10 perguntas.`);
         resultContainer.show();
         $('#quiz-container').hide();
 
         restartBtn.click(() => {
           currentQuestion = 0;
           score = 0;
+          questionsAnsweredOrSkipped = 0;
           resultContainer.hide();
           $('#quiz-container').show();
           $('#next-btn').text('Próxima Pergunta').prop('disabled', true);
@@ -212,32 +236,30 @@
 
         // Evento para voltar ao menu inicial
         $('#btn-voltar-menu').click(function () {
-          window.location.href = 'index.html'; // Substitua 'index.html' pelo caminho do seu menu inicial
+          window.location.href = 'index.html'; // Substitua 'index.html' pela URL correta do seu menu inicial
         });
       }
 
-      // Evento para a próxima pergunta
-      $('#next-btn').click(function () {
-        currentQuestion++; // Aumenta o índice da pergunta
-        displayQuestion(); // Exibe a próxima pergunta
-      });
-
-      // Evento para pular a pergunta
-      $('#skip-btn').click(function () {
-        currentQuestion++; // Aumenta o índice da pergunta
-        displayQuestion(); // Exibe a próxima pergunta
-      });
-
-      // Evento para confirmar a resposta
+      // Evento de clique para confirmar a resposta
       $('#confirm-btn').click(function () {
-        if (selectedOption !== null) { // Verifica se uma opção foi selecionada
-          checkAnswer(); // Verifica a resposta
-        } else {
-          alert('Por favor, selecione uma opção.'); // Alerta se nenhuma opção foi selecionada
-        }
+        checkAnswer();
+        questionsAnsweredOrSkipped++; // Incrementa o contador de perguntas respondidas ou puladas
       });
 
-      // Carrega as perguntas do JSON ao carregar a página
+      // Evento de clique para pular a pergunta
+      $('#skip-btn').click(function () {
+        currentQuestion++;
+        questionsAnsweredOrSkipped++; // Incrementa o contador de perguntas respondidas ou puladas
+        displayQuestion();
+      });
+
+      // Evento de clique para exibir a próxima pergunta
+      $('#next-btn').click(function () {
+        currentQuestion++;
+        displayQuestion();
+      });
+
+      // Carrega as perguntas quando a página é carregada
       loadQuestions();
     });
   </script>
