@@ -20,6 +20,14 @@
       padding: 0; /* Remova preenchimentos padrão */
     }
 
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Garante que o contêiner ocupe toda a altura da viewport */
+    }
+
     .ui.header {
       text-align: center;
       color: #0CC0DF;
@@ -141,7 +149,7 @@
 
 <body>
   <div class="ui container background-image" style="background-image: url('Images/Imagem-de-fundo.png');"></div>
-  
+  <div class="page-container">
   <div class="ui container">
     
     <div id="quiz-container" class="ui segment">
@@ -151,12 +159,13 @@
       <button id="next-btn" class="ui primary button" disabled>Próxima Pergunta</button>
       <button id="skip-btn" class="ui button">Pular Pergunta</button>
     </div>
-    
+    </div>
     <div id="result-container" style="display: none;">
       <h2 class="ui header" id="result"></h2>
       <button id="restart-btn" class="ui primary button">Reiniciar Quiz</button>
       <button id="btn-voltar-menu" class="ui button">Voltar ao Menu</button>
     </div>
+    
   </div>
 
   <!-- Inclua o link para o jQuery e o Semantic UI JS -->
