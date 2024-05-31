@@ -28,12 +28,35 @@
       min-height: 100vh; /* Garante que o contêiner ocupe toda a altura da viewport */
     }
 
-    .ui.header {
+    .responsive-header{
+      font-size: 80px; /* Tamanho padrão para desktop */
       text-align: center;
       color: #0CC0DF;
       font-family: "Big Shoulders Display";
     }
 
+    /*Adaptação dos estilos da classe responsive-header para diferentes dispositivos*/
+    @media (max-width: 1200px) {
+      .responsive-header {
+        font-size: 70px;
+      }
+    }
+    @media (max-width: 992px) {
+      .responsive-header {
+        font-size: 60px;
+      }
+    }
+    @media (max-width: 768px) {
+      .responsive-header {
+        font-size: 50px;
+      }
+    }
+    @media (max-width: 576px) {
+      .responsive-header {
+        font-size: 40px;
+      }
+    }
+    
     .ui.container {
       margin-top: 20px;
       /* Margem superior para o container */
@@ -121,6 +144,7 @@
       background-color: lightcoral !important;
       /* Cor de fundo para resposta incorreta */
     }
+    
 
     /* Estilo para dispositivos móveis */
     @media (max-width: 767px) {
@@ -144,14 +168,15 @@
       }
     }
 
+
   </style>
 </head>
 
 <body>
   <div class="ui container background-image" style="background-image: url('Images/Imagem-de-fundo.png');"></div>
+  <h1 class="responsive-header">Quiz UX</h1>
   <div class="page-container">
   <div class="ui container">
-    
     <div id="quiz-container" class="ui segment">
       <div id="question"></div>
       <div id="options" class="ui relaxed divided list"></div>
@@ -161,7 +186,7 @@
     </div>
     </div>
     <div id="result-container" style="display: none;">
-      <h2 class="ui header" id="result"></h2>
+      <h2 class="responsive-header" id="result"></h2>
       <button id="restart-btn" class="ui primary button">Reiniciar Quiz</button>
       <button id="btn-voltar-menu" class="ui button">Voltar ao Menu</button>
     </div>
