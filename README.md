@@ -16,7 +16,11 @@ Na barra de navegação localizada na parte inferior do site pode-se observar as
 6. Quiz UX 
 7. Integrantes
 
-Além das explicações teóricas, o site conta com um quiz sobre o assunto abordado no mesmo que está em desenvolvimento, para a fixação do aprendizado sobre o tema.
+Além das explicações teóricas, o site oferece um quiz sobre o tema abordado, facilitando a fixação do aprendizado. O quiz contém 10 perguntas por rodada, com conteúdo baseado nas informações do site. Ele foi desenvolvido especificamente para reforçar o conhecimento adquirido. O quiz é responsivo, permitindo o acesso de qualquer dispositivo, com o site se adaptando automaticamente para uma melhor experiência do usuário.
+
+![Site UX]( images/exemplo-quiz.png)
+
+
 
 ## Tecnologias Utilizadas:
 
